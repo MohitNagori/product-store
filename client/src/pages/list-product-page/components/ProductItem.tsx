@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Card, Avatar, CardHeader, CardContent }  from '@material-ui/core';
 import { red, blue } from '@material-ui/core/colors';
-import { postActions as actions } from '../../../redux/actions';
 import { IProduct } from '../../../interfaces';
 
 // Defining Own Props to avoid unwanted props
@@ -12,39 +11,24 @@ interface IOwnProps {
     classes?: any;
     product: IProduct.IProductData;
 }
-type IProps = IOwnProps &
-    IProduct.DispatchFromProps;
+type IProps = IOwnProps;
 
 // Defining Own State to avoid unwanted props
 interface IState {
-    expanded: boolean
+
 }
 
-// Post Item Page
+// Product Item Page
 class ProductItem extends React.Component<IProps, IState> {
-
-    constructor(props: IProps) {
-        super(props);
-        this.state = {
-            expanded: false
-        }
-    }    
-
-    handleExpandClick = () => {
-        this.setState({
-            expanded: !this.state.expanded
-        });
-    };
 
     render() {
         const { product, classes } = this.props;
-
         return (
             <Card className={classes.card}>
                 <CardHeader
                     avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                       {product.title[0].toUpperCase()}
+                    {product.title[0].toUpperCase()}
                     </Avatar>}
                     title={product.title.split(' ')[0]}
                     subheader={product.subcategory}/>
@@ -53,12 +37,12 @@ class ProductItem extends React.Component<IProps, IState> {
                     <p>Price: {product.price}</p>
                     <p>Popularity: {product.popularity}</p>
                 </CardContent>
-            </Card>
+            </Card> 
         );    
     }
 }
 // High Order Component to connect with store and action mapping
-const ProductItemWrapper = connect(null, actions) (ProductItem);
+const ProductItemWrapper = connect(null, null) (ProductItem);
 
 const styles = {
     card: {

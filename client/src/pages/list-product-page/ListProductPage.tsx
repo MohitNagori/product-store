@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Button, GridList, GridListTile } from '@material-ui/core';
+import { GridList, GridListTile } from '@material-ui/core';
 import { ProductItem }  from './components/ProductItem';
-import { postActions as actions } from '../../redux/actions';
+import { productActions as actions } from '../../redux/actions';
 import { IProduct } from '../../interfaces/productInterface';
 
 // Defining Own Props to avoid unwanted props
@@ -27,7 +27,6 @@ const mapStateToProps = function(state: any){
     return {
         isDrawerOpen: state.app.isDrawerOpen,
         products: state.product.products,
-        pageNumber: state.product.pageNumber,
         categories: state.product.categories,
         priceCategories: state.product.priceCategories,
         filterQuery: state.product.filterQuery,
@@ -64,16 +63,13 @@ class ListProductPage extends React.Component<IProps, IState> {
     }
     
     fetchPosts = async () => {
-        await this.props.fetchProducts(this.props.pageNumber, this.props.filterQuery);
-        this.setState({
-            canLoadMore: this.props.totalProducts && this.props.totalProducts > this.props.products.length
-        })
+        await this.props.fetchProducts(this.props.filterQuery);
     }
 
     getPostItems() {
         return this.props.products.map((product: IProduct.IProductData, index) => {
             return  <GridListTile key={product.product_id.toString()} cols={1}>
-                        <ProductItem product={product}/>;              
+                        <ProductItem product={product}/>    
                     </GridListTile>
         });
     }
@@ -82,12 +78,10 @@ class ListProductPage extends React.Component<IProps, IState> {
         const {classes} = this.props;
         return (
             <div className={classes.main}>
-                <GridList cellHeight='auto' className={classes.gridList} cols={this.props.isDrawerOpen && this.state.gridCellConfig == 2 ? 1 : this.state.gridCellConfig}>
+                <GridList cellHeight='auto' className={classes.gridList} 
+                    cols={this.props.isDrawerOpen && this.state.gridCellConfig === 2 ? 1 : this.state.gridCellConfig}>
                     { this.getPostItems() }
                 </GridList>
-                { this.state.canLoadMore ? 
-                    <Button color='primary' variant="contained" onClick={this.fetchPosts} 
-                className={classes.button}>Load More</Button> : null }
             </div>
         );    
     }

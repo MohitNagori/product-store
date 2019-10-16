@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
 import { Box } from '@material-ui/core';
 import { AppLoading } from './AppLoading';
-import { ListProduct } from '../pages';
+import { ListProduct, Categories } from '../pages';
 import { appActions as actions } from '../redux/actions';
 import { CONSTANTS } from '../utils/constants';
 import { IApp } from '../interfaces';
@@ -42,7 +42,7 @@ class AppMain extends React.Component<IProps, IState> {
             <div className={classes.drawerHeader} />
             <AppLoading />
             <Route exact={true} path="/" component={ListProduct}/>
-            {/* <Route path="/categories" component={Categories}/> */}
+            <Route path="/categories" component={Categories}/>
         </Box>
     );
   }

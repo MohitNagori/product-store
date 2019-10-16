@@ -6,11 +6,7 @@ import { IProduct } from '../../interfaces';
 const initialState: IProduct.StateToProps = {
   error: false,
   loading: false,
-  totalProducts: -1,
   products: [],
-  pageNumber: 0,
-  categories: [],
-  priceCategories: [],
   filterQuery: '',
 };
 
@@ -31,8 +27,6 @@ export default function productReducer (
     case Types.FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
-        pageNumber: state.pageNumber + 1,
-        totalProducts: action.payload.totalProducts,
         products: state.products.concat(action.payload.products),
         filterQuery: '',
         error: false,
@@ -46,32 +40,6 @@ export default function productReducer (
         error: action.payload.message || true,
         loading: false,
       };
-
-  // For fetching categories
-  case Types.FETCH_CATEGORIES:
-    return {
-      ...state,
-      totalProducts: -1,
-      products: [],
-      pageNumber: 0,
-      error: false,
-      loading: true,
-    };
-  case Types.FETCH_CATEGORIES_SUCCESS:
-    return {
-      ...state,
-      categories: action.payload.categories,
-      price: action.payload.price,
-      error: false,
-      loading: false,
-    };
-  case Types.FETCH_CATEGORIES_FAILED:
-    return {
-      ...state,
-      categories: [],
-      error: action.payload.message || true,
-      loading: false,
-    };      
 
   // For saving selected category
   case Types.SAVE_FILTER:

@@ -52,7 +52,7 @@ class AppHeader extends React.Component<IProps, IState> {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Truecaller Blog
+            Product Blog  
           </Typography>
         </Toolbar>
       </AppBar>

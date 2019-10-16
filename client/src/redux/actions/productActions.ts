@@ -4,14 +4,14 @@ import { fetchProducts } from '../../services';
 
 // Actions related to posts, categories and tags
 const IPostAction: IProduct.DispatchFromProps = {
-  fetchProducts: (pageNumber: number, filterQuery: string | undefined) => {
+  fetchProducts: (filterQuery: string | undefined) => {
     return async function (dispatch: any) {
       // dispatch to update store when actions starts 
       dispatch({
         type: Types.FETCH_PRODUCTS,
       });
       try {
-        const response: any = await fetchProducts(pageNumber, filterQuery);
+        const response: any = await fetchProducts(filterQuery);
         // dispatch to update store when actions complted successfully 
         dispatch({
           type: Types.FETCH_PRODUCTS_SUCCESS,
@@ -28,27 +28,6 @@ const IPostAction: IProduct.DispatchFromProps = {
       }
     };
   },
-  fetchCategories: () => {
-    return async function (dispatch: any) {
-      dispatch({
-        type: Types.FETCH_CATEGORIES,
-      });
-      try {
-        // const response: any = await fetchCategories();
-        dispatch({
-          type: Types.FETCH_CATEGORIES_SUCCESS,
-          // payload: { categories: response.data.categories },
-        });
-        return ;
-      } catch(e) {
-        dispatch({
-          type: Types.FETCH_CATEGORIES_FAILED,
-          payload: e,
-        });
-        return [];
-      }
-    };
-  },
   saveSelectedFilter: (filter: string) => {
     return async function (dispatch: any) {
       dispatch({
@@ -59,4 +38,4 @@ const IPostAction: IProduct.DispatchFromProps = {
   },
 };
 
-export { IPostAction as postActions }
+export { IPostAction as productActions }
