@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing AppDrawer component renders as expected 1`] = `
+<Connect(AppDrawer)
+  classes={
+    Object {
+      "drawer": "Connect(AppDrawer)-drawer-1",
+      "drawerHeader": "Connect(AppDrawer)-drawerHeader-3",
+      "drawerPaper": "Connect(AppDrawer)-drawerPaper-2",
+      "link": "Connect(AppDrawer)-link-5",
+      "menuItem": "Connect(AppDrawer)-menuItem-4",
+    }
+  }
+/>
+`;
