@@ -31,7 +31,9 @@ const mapStateToProps = function(state: any){
 
 // Main Component
 class AppMain extends React.Component<IProps, IState> {
- 
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+  }
   // Function to render UI
   render() {
     const { classes } = this.props;
@@ -63,11 +65,6 @@ const styles = {
   contentShift: {
     marginLeft: 0,
   }
-}
-
-// Defining proptery to Higher Order Component
-AppMainWrapper.propTypes = {
-  classes: PropTypes.object.isRequired,
 }
 
 /* High Order Component to apply styles as styles can either be applied in HOOK (not in React Component) 

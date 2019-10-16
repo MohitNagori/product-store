@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Button, Divider }  from '@material-ui/core';
+import { Button }  from '@material-ui/core';
 import { productActions as actions } from '../redux/actions';
 import { IProduct } from '../interfaces/productInterface';
 import clsx from 'clsx';
@@ -24,6 +24,10 @@ interface IState {
 
 // Categories Page
 class Categories extends React.Component<IProps, IState> {
+    static propTypes = {
+        classes: PropTypes.object.isRequired,
+    }
+    
     filter = '';
 
     constructor(props: IProps) {
@@ -181,7 +185,6 @@ class Categories extends React.Component<IProps, IState> {
             }
         })
 
-        console.log(this.filter);
         this.saveFilter(this.filter);
     }
 
@@ -257,10 +260,6 @@ const styles = {
     }
 }
 
-// Defining proptery to Higher Order Component
-CategoriesWrapper.propTypes = {
-    classes: PropTypes.object.isRequired,
-}
 
 /* High Order Component to apply styles as styles can either be applied in HOOK (not in React Component) 
   or with Higher Order Component. We used higher order component as we have used material components.

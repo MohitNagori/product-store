@@ -27,6 +27,9 @@ const mapStateToProps = function(state: any){
 
 // Loading Component
 class AppLoading extends React.Component<IProps, IState> {
+    static propTypes = {
+        classes: PropTypes.object.isRequired,
+    }
 
     // Function to render UI
     render() {
@@ -61,11 +64,6 @@ const styles = {
     contentShift: {
         width: `calc(100% - ${CONSTANTS.DRAWER_WIDTH}px)`,
     }
-}
-
-// Defining proptery to Higher Order Component
-AppLoadingWrapper.propTypes = {
-classes: PropTypes.object.isRequired,
 }
 
 /* High Order Component to apply styles as styles can either be applied in HOOK (not in React Component) 

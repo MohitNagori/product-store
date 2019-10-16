@@ -20,6 +20,9 @@ interface IState {
 
 // Product Item Page
 class ProductItem extends React.Component<IProps, IState> {
+    static propTypes = {
+        classes: PropTypes.object.isRequired,
+    }
 
     render() {
         const { product, classes } = this.props;
@@ -62,11 +65,6 @@ const styles = {
     avatar: {
         backgroundColor: red[500],
     },
-}
-
-// Defining proptery to Higher Order Component
-ProductItemWrapper.propTypes = {
-classes: PropTypes.object.isRequired,
 }
 
 /* High Order Component to apply styles as styles can either be applied in HOOK (not in React Component) 

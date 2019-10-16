@@ -27,7 +27,7 @@ export default function productReducer (
     case Types.FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
-        products: state.products.concat(action.payload.products),
+        products: action.payload.products,
         filterQuery: '',
         error: false,
         loading: false,

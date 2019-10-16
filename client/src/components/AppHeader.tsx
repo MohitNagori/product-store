@@ -32,6 +32,9 @@ const mapStateToProps = function(state: any){
 
 // Header Component
 class AppHeader extends React.Component<IProps, IState> {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+  }
   
   // Function to render UI
   render() {
@@ -76,11 +79,6 @@ const styles = {
     textDecoration: 'inherit',
     color: colors.WHITE,
   }
-}
-
-// Defining proptery to Higher Order Component
-AppHeaderWrapper.propTypes = {
-  classes: PropTypes.object.isRequired,
 }
 
 /* High Order Component to apply styles as styles can either be applied in HOOK (not in React Component) 

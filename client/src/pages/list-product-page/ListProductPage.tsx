@@ -35,6 +35,9 @@ const mapStateToProps = function(state: any){
   
 // List Post Page
 class ListProductPage extends React.Component<IProps, IState> {
+    static propTypes = {
+        classes: PropTypes.object.isRequired,
+    }
 
     constructor(props: IProps) {
         super(props);
@@ -101,11 +104,6 @@ const styles = {
         width: '100%',
         height: '100%',
     },
-}
-
-// Defining proptery to Higher Order Component
-ListProductWrapper.propTypes = {
-    classes: PropTypes.object.isRequired,
 }
 
 /* High Order Component to apply styles as styles can either be applied in HOOK (not in React Component) 

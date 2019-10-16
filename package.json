@@ -2,7 +2,9 @@
   "name": "products-manager",
   "version": "1.0.0",
   "description": "",
-  "main": "products.js",
+  "engines": {
+    "node": "10.3.0"
+  },
   "scripts": {
     "start": "node src/app.js",
     "server": "nodemon src/app.js",

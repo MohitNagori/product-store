@@ -30,6 +30,9 @@ const mapStateToProps = function(state: any){
 
 // Drawer Component
 class AppDrawer extends React.Component<IProps, IState> {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+  }
 
   // Funtion that return icon based on side menu 
   getMenuListIcon = (icon: any) => {
@@ -102,11 +105,6 @@ const styles = {
     padding: 10,
     width: '100%'
   },
-}
-
-// Defining proptery to Higher Order Component
-AppDrawerWrapper.propTypes = {
-  classes: PropTypes.object.isRequired,
 }
 
 /* High Order Component to apply styles as styles can either be applied in HOOK (not in React Component) 
